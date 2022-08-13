@@ -2,23 +2,27 @@ class Solution
 {
     public int countSubstrings(String s) 
     {
-        if(s.length()==0)return 0;
-        int result =0;
-        
+        int count =0;
         for(int i=0;i<s.length();i++)
         {
-            result+=isPalindrome(i,i,s);
-            result+=isPalindrome(i,i+1,s);
+           for(int j =i+1;j<=s.length();j++) 
+           {
+               String sub = s.substring(i,j);
+               if(isPalindrome(sub)==true)
+               {
+                  count++; 
+               }
+           }
         }
-       return result;
-    }
-    public int isPalindrome(int start, int end, String s)
-    {
-       int count =0;
-       while(start>=0 && end <s.length() && s.charAt(start--)==s.charAt(end++))
-       {
-           count++;
-       }
         return count;
+    }
+    public boolean isPalindrome(String str)
+    {
+        int n = str.length()-1;
+        for(int i=0;i<str.length()/2;i++)
+        {
+            if(str.charAt(i)!=str.charAt(n-i)) return false;
+        }
+        return true;
     }
 }
