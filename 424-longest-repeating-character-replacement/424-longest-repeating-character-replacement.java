@@ -2,21 +2,23 @@ class Solution
 {
     public int characterReplacement(String s, int k) 
     {
-       int left = 0;
-       int result=0;
-       int maxF=0;
-       int[] arr = new int[26]; 
-       for(int right =0;right<s.length();right++)
+       int N = s.length();
+       int window_start = 0;
+       int max_length=0;
+       int max_count=0;
+       int[] char_counts = new int[26]; 
+        
+       for(int window_end =0;window_end<N;window_end++)
        {
-           arr[s.charAt(right)-'A']++;
-           maxF = Math.max(maxF,arr[s.charAt(right)-'A']);
-           while(((right-left+1)-maxF)>k)
+           char_counts[s.charAt(window_end)-'A']++;
+           max_count = Math.max(max_count,char_counts[s.charAt(window_end)-'A']);
+           while(((window_end-window_start+1)-max_count)>k)
            {
-               arr[s.charAt(left)-'A']--;
-               left++;
+               char_counts[s.charAt(window_start)-'A']--;
+               window_start++;
            }
-           result=Math.max(result,right-left+1);
+           max_length=Math.max(max_length,window_end-window_start+1);
        }
-        return result;
+        return max_length;
     }
 }
