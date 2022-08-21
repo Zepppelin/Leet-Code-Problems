@@ -12,7 +12,6 @@ class Solution
         for(Map.Entry<Integer,Integer> it : map.entrySet())
         {
             pq.add(it);
-            System.out.println(pq);
             if(pq.size()>k)
             {
                 pq.poll();
