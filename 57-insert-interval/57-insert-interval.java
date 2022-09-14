@@ -5,7 +5,7 @@ class Solution
         List<int[]> res = new ArrayList<>();
         for(int[] interval : intervals)
         {
-           if(newInterval==null || newInterval[0]>interval[1])
+            if(newInterval==null || newInterval[0]>interval[1])
             {
                  res.add(interval);
             }
