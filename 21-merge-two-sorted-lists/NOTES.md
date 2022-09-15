@@ -1,1 +1,2 @@
-​
+sol - fraz
+sol-nick
